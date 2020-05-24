@@ -10,21 +10,27 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class CardFormModalComponent implements OnInit {
 
   cardForm: FormGroup;
-
   btnTitle: string = 'Create';
+  cardData: any;
+  formSubmitted: boolean = false;
 
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     this.cardForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      desc: new FormControl('')
+      desc: new FormControl(''),
+      id: new FormControl(Date.now())
     });
+    if (this.cardData) {
+      this.cardForm.patchValue(this.cardData);
+      this.cardForm.markAsPristine();
+    }
+    this.formSubmitted = false;
   }
 
   onSubmit() {
-    this.cardForm.value;
-    console.log('this.cardForm.value', this.cardForm.value);
+    this.formSubmitted = true;
     this.bsModalRef.hide();
   }
 

@@ -1,9 +1,9 @@
 <div class="section-wrapper">
-  <h5>{{heading}} <button class="btn btn-link" (click)="onAdd()">+ Add</button></h5>
+  <h5>{{heading?.title}} <button class="btn btn-link" (click)="onAdd()">+ Add</button></h5>
 
   <div class="row">
     <div class="card-wrapper">
-      <app-card class="m-2" *ngFor="let card of cards;" [data]="card"></app-card>
+      <app-card class="m-2" *ngFor="let card of cards;" [data]="card" [cardType]="heading.type" (click)="onEdit(card)"></app-card>
     </div>
   </div>
 </div>

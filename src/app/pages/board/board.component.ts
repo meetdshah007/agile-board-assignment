@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardType } from 'src/app/shared/models/card-type';
 
 @Component({
   selector: 'app-board',
@@ -7,16 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  sections: string[] = [];
+  sections: any[] = [];
   constructor() { }
 
   ngOnInit() {
-    this.sections.push(
-      'What went well',
-      'What can be improved',
-      'Start doing',
-      'Action items'
-    );
+    this.sections.push({
+      title: 'What went well',
+      type: CardType.success
+    }, {
+      title: 'What can be improved',
+      type: CardType.warning
+    }, {
+      title: 'Start doing',
+      type: CardType.info
+    }, {
+      title: 'Action items',
+      type: CardType.primary
+    });
   }
 
 }
