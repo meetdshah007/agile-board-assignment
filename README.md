@@ -12,8 +12,6 @@ Folder Structure--
 
 Angular Concepts:
 Lazy Loading
-Unit Testing
-E2E Testing
 Bootstrap
 Component Communication (Parent to child)
 3rd Party Library integration
