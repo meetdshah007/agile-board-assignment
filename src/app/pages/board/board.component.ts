@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  sections: string[] = [];
   constructor() { }
 
   ngOnInit() {
+    this.sections.push(
+      'What went well',
+      'What can be improved',
+      'Start doing',
+      'Action items'
+    );
   }
 
 }

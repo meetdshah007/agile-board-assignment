@@ -1,2 +1,9 @@
-<p>section works!</p>
-<app-card></app-card>
+<div class="section-wrapper">
+  <h5>{{heading}} <button class="btn btn-link" (click)="onAdd()">+ Add</button></h5>
+
+  <div class="row">
+    <div class="card-wrapper">
+      <app-card class="m-2" *ngFor="let card of cards;" [data]="card"></app-card>
+    </div>
+  </div>
+</div>

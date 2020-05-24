@@ -1,1 +1,5 @@
-<app-section></app-section>
+<div class="row mt-4">
+  <div class="col-sm-12 col-md-3" *ngFor="let section of sections">
+    <app-section [heading]="section"></app-section>
+  </div>
+</div>
