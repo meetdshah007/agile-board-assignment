@@ -10,10 +10,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit, OnDestroy {
-
+  // Inputs of the data and cardType.
   @Input() data: any;
   @Input() cardType: number;
+
+  // Clearing the subscribers to avoid memory leak.
   destroy$: Subject<void> = new Subject();
+
+  // Utility flag to manage the class usage and highlighter.
   applyFocus: boolean = false;
   cardCls: string;
 
@@ -22,7 +26,7 @@ export class CardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.applyClassType()
+    this.applyClassType();
     this.focusService.focusEl$
       .pipe(
         takeUntil(this.destroy$)
@@ -32,6 +36,9 @@ export class CardComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Utility method to run it will decide the active classes to be applied for ui/ux.
+   */
   applyClassType() {
     let cardClass = '';
     let cardActiveClass = '';
@@ -58,6 +65,10 @@ export class CardComponent implements OnInit, OnDestroy {
       this.cardCls = cardActiveClass;
     }
   }
+
+  /**
+   * Cleaning up the memory leak.
+   */
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();

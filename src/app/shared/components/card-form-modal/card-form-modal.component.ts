@@ -9,9 +9,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class CardFormModalComponent implements OnInit {
 
+  // FormGroup member that holds the form and binds the data.
   cardForm: FormGroup;
+
+  // Title used to display correct Headings and button strings.
   btnTitle: string = 'Create';
+
+  // Data to be passed and when given patched to form as a value.
   cardData: any;
+
+  // To know the closing type of the modal.
   formSubmitted: boolean = false;
 
   constructor(public bsModalRef: BsModalRef) { }
@@ -29,6 +36,9 @@ export class CardFormModalComponent implements OnInit {
     this.formSubmitted = false;
   }
 
+  /**
+   * Method that triggers on clicking the submit or triggering the submit event.
+   */
   onSubmit() {
     this.formSubmitted = true;
     this.bsModalRef.hide();

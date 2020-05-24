@@ -10,7 +10,11 @@ export class FocusService {
 
   constructor() { }
 
-  setFocus(id) {
+  /**
+   * Utility method to inform all the subscriber of changing the focus.
+   * @param id uqniue number that will get the focus.
+   */
+  setFocus(id: number): void {
     this.focusEl$.next(id);
   }
 }

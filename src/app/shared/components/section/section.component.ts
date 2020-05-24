@@ -9,9 +9,8 @@ import { FocusService } from '../../services/focus.service';
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent {
   @Input() heading: any;
-
   cards: any[] = [];
 
   constructor(
@@ -19,10 +18,10 @@ export class SectionComponent implements OnInit {
     private focusService: FocusService
   ) { }
 
-  ngOnInit() {
-  }
-
-  onAdd() {
+  /**
+   * Utility method to trigger Add Card event and show the empty modal on the screen.
+   */
+  onAdd(): void {
     const initialState = {
       btnTitle: 'Create',
       cardData: null
@@ -31,6 +30,10 @@ export class SectionComponent implements OnInit {
     this.focusService.setFocus(null);
   }
 
+  /**
+   * Utility method to trigger Edit Card event and show modal with filled in data in form.
+   * @param card data
+   */
   onEdit(card) {
     const initialState = {
       btnTitle: 'Update',
@@ -40,6 +43,10 @@ export class SectionComponent implements OnInit {
     this.focusService.setFocus(card.id);
   }
 
+  /**
+   * Utility method that presents the modal on the screen.
+   * @param initialState data given by onAdd, onEdit methods.
+   */
   showModal(initialState) {
     const bsModalRef = this.modalService.show(CardFormModalComponent, { initialState });
     bsModalRef.content.closeBtnName = 'Close';
